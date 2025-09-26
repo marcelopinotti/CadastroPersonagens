@@ -2,6 +2,7 @@ package dev.marcelopinotti.CadastroDePersonagem.Personagens;
 
 
 import dev.marcelopinotti.CadastroDePersonagem.Missoes.MissoesModel;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,6 +26,7 @@ public class PersonagemModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera o id automaticamente
     private Long id;
+    @Column(unique = true, nullable = false) // nome unico e nao nulo
     private String nome;
     private String genero;
     private int idade;
