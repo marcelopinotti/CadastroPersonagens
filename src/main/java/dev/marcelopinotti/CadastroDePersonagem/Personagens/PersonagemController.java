@@ -1,4 +1,4 @@
-package dev.marcelopinotti.CadastroDePersonagem;
+package dev.marcelopinotti.CadastroDePersonagem.Personagens;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
