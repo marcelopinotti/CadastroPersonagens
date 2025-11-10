@@ -1,11 +1,12 @@
-package dev.marcelopinotti.CadastroDePersonagem.Missoes;
+package dev.marcelopinotti.CadastroDePersonagem.Carros;
 
 import dev.marcelopinotti.CadastroDePersonagem.Personagens.PersonagemModel;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,22 +16,22 @@ import lombok.ToString;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_missoes")
+@Table(name = "tb_carros")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @ToString
-public class MissoesModel {
+public class CarrosModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private String descricao;
-    private String universo;
+    private String marca;
 
-    @OneToMany(mappedBy = "missoes")    // uma missao com muitos personagens
-    private List<PersonagemModel> personagens;
+    @ManyToOne   // muitos carros para um personagem
+    @JoinColumn(name = "personagem_id")
+    private PersonagemModel personagens;
 
 
 

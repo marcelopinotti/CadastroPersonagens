@@ -1,19 +1,21 @@
 package dev.marcelopinotti.CadastroDePersonagem.Personagens;
 
 
-import dev.marcelopinotti.CadastroDePersonagem.Missoes.MissoesModel;
+import dev.marcelopinotti.CadastroDePersonagem.Carros.CarrosModel;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import java.util.List;
 
 
 @Entity //transforma a classe em uma entidade
@@ -32,9 +34,8 @@ public class PersonagemModel {
     private int idade;
     private String desenho;
 
-    @ManyToOne   // Muitos personagens para uma missao
-    @JoinColumn(name = "missoes_id") // nome da chave estrangeira
-    private MissoesModel missoes;
+    @OneToMany(mappedBy = "personagens",cascade = CascadeType.ALL) // cascadetype all para salvar em cascata
+    private List<CarrosModel> carros;
 
 
 }
