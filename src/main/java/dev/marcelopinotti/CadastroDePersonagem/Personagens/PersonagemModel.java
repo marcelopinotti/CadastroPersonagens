@@ -5,6 +5,7 @@ import dev.marcelopinotti.CadastroDePersonagem.Carros.CarrosModel;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,7 +24,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data  // Todos os getters e setters
-@ToString
 public class PersonagemModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera o id automaticamente
@@ -34,7 +34,7 @@ public class PersonagemModel {
     private int idade;
     private String desenho;
 
-    @OneToMany(mappedBy = "personagens",cascade = CascadeType.ALL) // cascadetype all para salvar em cascata
+    @OneToMany(mappedBy = "personagens",cascade = CascadeType.ALL,fetch = FetchType.LAZY) // cascadetype all para salvar em cascata
     private List<CarrosModel> carros;
 
 

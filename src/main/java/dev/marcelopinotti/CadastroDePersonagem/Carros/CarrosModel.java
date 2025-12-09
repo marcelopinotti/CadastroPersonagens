@@ -2,6 +2,7 @@ package dev.marcelopinotti.CadastroDePersonagem.Carros;
 
 import dev.marcelopinotti.CadastroDePersonagem.Personagens.PersonagemModel;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,7 +21,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@ToString
+
 public class CarrosModel {
 
     @Id
@@ -29,8 +30,8 @@ public class CarrosModel {
     private String nome;
     private String marca;
 
-    @ManyToOne   // muitos carros para um personagem
-    @JoinColumn(name = "personagem_id")
+    @ManyToOne(fetch = FetchType.LAZY)   // muitos carros para um personagem
+    @JoinColumn(name = "personagem_id") // Foreing key
     private PersonagemModel personagens;
 
 
