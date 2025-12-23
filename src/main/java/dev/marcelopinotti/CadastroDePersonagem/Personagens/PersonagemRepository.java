@@ -1,4 +1,6 @@
 package dev.marcelopinotti.CadastroDePersonagem.Personagens;
 
-public class PersonagemRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PersonagemRepository extends JpaRepository<PersonagemModel, Long> {
 }
